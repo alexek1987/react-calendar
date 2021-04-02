@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+# MERN Stack Template
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img src='https://github.com/belferink1996/MERN-template/blob/images/images/mern.jpeg' alt='MERN banner' width='700' />
 
-## Available Scripts
+- **M** = [MongoDB](https://www.mongodb.com)
+- **E** = [Express.js](https://expressjs.com)
+- **R** = [React.js](https://reactjs.org)
+- **N** = [Node.js](https://nodejs.org)
 
-In the project directory, you can run:
+<br />
+<br />
 
-### `yarn start`
+# How to use this template
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[📀 Demo video](https://youtu.be/N2pvvkyoS68)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### STEP 1:
 
-### `yarn test`
+Click ["Use this template"](https://github.com/belferink1996/MERN-template/generate) to generate a
+new repository.<br /> Then open your terminal and clone your repository:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+> cd ~/Desktop <br /> git clone https://github.com/[your-user-name]/[your-repo-name].git
 
-### `yarn build`
+<br />
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### STEP 2:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Go to your repository's folder, and install all dependecies:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+> cd ~/Desktop/[your-repo-name]<br /> npm install
 
-### `yarn eject`
+<br />
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### STEP 3:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Prepare your MongoDB database ([atlas](https://www.mongodb.com/cloud/atlas),
+[community](<https://github.com/belferink1996/MERN-template/wiki/Install-MongoDB-Community-Server-(MacOS)>)).<br />
+Then go to your server folder (backend), and set your database within `server.js`,
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<br />
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### STEP 4: CODE !!!
 
-## Learn More
+<br />
+<br />
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Node dependecies & versions:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+###### Client:
 
-### Code Splitting
+> axios: ^0.21.1 &nbsp;&nbsp;&nbsp; ---> &nbsp;&nbsp;&nbsp; Use the API<br /> react: ^17.0.1
+> &nbsp;&nbsp;&nbsp; ---> &nbsp;&nbsp;&nbsp; UI framework<br /> react-dom: ^17.0.1
+> &nbsp;&nbsp;&nbsp; ---> &nbsp;&nbsp;&nbsp; UI framework<br /> react-scripts: 4.0.3
+> &nbsp;&nbsp;&nbsp; ---> &nbsp;&nbsp;&nbsp; React 'npm' scripts
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+###### Server:
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+> cors: ^2.8.5 &nbsp;&nbsp;&nbsp; ---> &nbsp;&nbsp;&nbsp; Enable HTTP requests<br/> dotenv: ^8.2.0
+> &nbsp;&nbsp;&nbsp; ---> &nbsp;&nbsp;&nbsp; Secure sensitive information<br /> express: ^4.17.1
+> &nbsp;&nbsp;&nbsp; ---> &nbsp;&nbsp;&nbsp; Server app<br /> mongoose: ^5.12.0 &nbsp;&nbsp;&nbsp;
+> ---> &nbsp;&nbsp;&nbsp; MongoDB database<br /> morgan: ^1.10.0 &nbsp;&nbsp;&nbsp; --->
+> &nbsp;&nbsp;&nbsp; Logs incoming requests
