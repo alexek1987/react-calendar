@@ -13,20 +13,30 @@ import {
   startOfWeek,
   endOfWeek,
 } from "date-fns";
+import AddEvent from "./AddEvent";
 
 function Calendar() {
   const [currentMonth, setCurrentMonth] = useState(new Date());
-
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [mousePosition, setMousePosition] = useState({ x: null, y: null });
 
   const onDateClick = (day) => setSelectedDate(day);
-
   const nextMonth = () => setCurrentMonth(addMonths(currentMonth, 1));
-
   const prevMonth = () => setCurrentMonth(subMonths(currentMonth, 1));
+
+  const userClick = (e) => {
+    console.log(setMousePosition({ x: e.clientX, y: e.clientY }));
+  };
 
   return (
     <div className="calendar">
+      {mousePosition.x && mousePosition.y && (
+        <AddEvent
+          setMousePosition={setMousePosition}
+          mousePosition={mousePosition}
+          selectedDate={selectedDate}
+        />
+      )}
       <RenderHeader
         currentMonth={currentMonth}
         nextMonth={nextMonth}
@@ -34,6 +44,7 @@ function Calendar() {
       />
       <RenderDays currentMonth={currentMonth} />
       <RenderCells
+        userClick={userClick}
         currentMonth={currentMonth}
         selectedDate={selectedDate}
         onDateClick={onDateClick}
@@ -83,9 +94,8 @@ function RenderDays({ currentMonth }) {
   return <div className="days row">{days}</div>;
 }
 
-function RenderCells({ currentMonth, selectedDate, onDateClick }) {
+function RenderCells({ currentMonth, selectedDate, onDateClick, userClick }) {
   const { events } = useEvent();
-  console.log(events);
   const monthStart = startOfMonth(currentMonth);
   const monthEnd = endOfMonth(monthStart);
   const startDate = startOfWeek(monthStart);
@@ -97,10 +107,6 @@ function RenderCells({ currentMonth, selectedDate, onDateClick }) {
   let days = [];
   let day = startDate;
   let formattedDate = "";
-
-  console.log(startDate);
-  console.log(endDate);
-  console.log(day);
 
   while (day <= endDate) {
     for (let i = 0; i < 7; i++) {
@@ -116,18 +122,21 @@ function RenderCells({ currentMonth, selectedDate, onDateClick }) {
               : ""
           }`}
           key={day}
-          onClick={() => onDateClick(cloneDay)}
-        >
-          <span className="number">{formattedDate}</span>
-          <span className="bg">{formattedDate}</span>
-          <div>
+          onClick={(e) => {
+            onDateClick(cloneDay);
+            userClick(e);
+          }}>
+          <div style={{ overflow: "scroll" }}>
             {events.map(
               (event) =>
-                new Date(event.date).getDate() === cloneDay &&
+                new Date(event.date).getDate() ===
+                  new Date(cloneDay).getDate() &&
                 new Date(event.date).getMonth() ===
                   new Date(currentMonth).getMonth() && <div>{event.event}</div>
             )}
           </div>
+          <span className="number">{formattedDate}</span>
+          <span className="bg">{formattedDate}</span>
         </div>
       );
       day = addDays(day, 1);

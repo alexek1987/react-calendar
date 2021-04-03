@@ -12,6 +12,11 @@ export function useEvent() {
 // export the provider (handle all the logic here)
 export function EventProvider({ children }) {
   const [events, setEvents] = useState([]);
+  const addEvent = (item) => {
+    const copyOfEvents = [...events];
+    copyOfEvents.push(item);
+    setEvents(copyOfEvents);
+  };
 
   //
   useEffect(() => {
@@ -26,7 +31,7 @@ export function EventProvider({ children }) {
   }, []);
 
   return (
-    <EventContext.Provider value={{ events, setEvents }}>
+    <EventContext.Provider value={{ events, addEvent }}>
       {children}
     </EventContext.Provider>
   );
