@@ -12,6 +12,8 @@ Calendar APP using create-react-app and the MERN template: https://github.com/be
 
 -Clone repository
 <br/>
+-Configure MONGO_URI in .env file with MongoDB credentials.
+<br/>
 -Run 'npm i' in client directory & server directory.
 <br/>
 -Run 'npm start' in client directory & server directory.
