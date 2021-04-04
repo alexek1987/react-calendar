@@ -4,14 +4,46 @@ import Event from "../models/Event.js";
 export async function addEvent(req, res, next) {
   try {
     // Handle your logic here...
+    const { event, date, reoccuring } = req.body;
 
-    const newEvent = await Event.create({
-      event: req.body.event,
-      date: req.body.date,
-    });
+    let singleOrMultipleEvents = [];
+
+    if (reoccuring) {
+      let endNum;
+      let currDay = new Date(date).getDate();
+      let currMonth = new Date(date).getMonth();
+      let currYear = new Date(date).getFullYear();
+
+      if (currMonth === 1) {
+        // feb
+        endNum = 28;
+      } else if (currMonth % 2 === 0) {
+        // even months, by index jan, march, etc
+        endNum = 31;
+      } else if (currMonth % 2 != 0) {
+        // odd months by index, april etc
+        endNum = 30;
+      }
+
+      for (let index = currDay; index <= endNum; index += 7) {
+        const newEvent = await Event.create({
+          event,
+          date: new Date(currYear, currMonth, index),
+        });
+        singleOrMultipleEvents.push(newEvent);
+      }
+    } else {
+      const newEvent = await Event.create({
+        event,
+        date,
+      });
+      singleOrMultipleEvents = newEvent;
+    }
 
     // return something to the client-side
-    res.status(201).json({ message: "Event created", event: newEvent });
+    res
+      .status(201)
+      .json({ message: "Event created", event: singleOrMultipleEvents });
   } catch (error) {
     console.error(error);
     response.status(500).send();

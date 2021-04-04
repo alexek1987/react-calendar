@@ -234,4 +234,5 @@ main {
   flex-grow: 0;
   flex-basis: calc(100% / 7);
   width: calc(100% / 7);
+  overflow: scroll;
 }

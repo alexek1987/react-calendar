@@ -1,11 +1,11 @@
 import { useRef } from "react";
 import axios from "./api";
 import { useEvent } from "./contexts/EventContext";
-import { TextField } from "@material-ui/core";
 
 function AddEvent({ mousePosition, selectedDate, setMousePosition }) {
   const { addEvent } = useEvent();
   const inputRef = useRef();
+  const occurRef = useRef();
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -13,7 +13,10 @@ function AddEvent({ mousePosition, selectedDate, setMousePosition }) {
       const data = {
         event: inputRef.current.value,
         date: new Date(selectedDate),
+        reoccuring: occurRef.current.checked,
       };
+
+      console.log(data);
 
       const response = await axios.post("/event/new", data);
       addEvent(response.data.event);
@@ -22,6 +25,11 @@ function AddEvent({ mousePosition, selectedDate, setMousePosition }) {
       console.error(error.message);
     }
   };
+
+  const closeInputFieldHandler = () => {
+    setMousePosition({ x: null, y: null });
+  };
+
   return (
     <form
       onSubmit={submitHandler}
@@ -31,14 +39,53 @@ function AddEvent({ mousePosition, selectedDate, setMousePosition }) {
         left: mousePosition.x,
         zIndex: "999",
       }}>
-      <TextField
-        inputRef={inputRef}
-        id="standard-basic"
-        label="Add new Event"
-      />
-      <button
-        style={{ border: "none", background: "transparent", fontSize: "20px" }}
-        type="submit"></button>
+      <div
+        style={{
+          height: "150px",
+          backgroundColor: "#ede6b8",
+        }}>
+        <input
+          style={{
+            height: "70px",
+            border: "none",
+            background: "transparent",
+            outline: "none",
+          }}
+          ref={inputRef}
+        />
+        <div style={{ padding: "7px" }}>
+          <label style={{ fontSize: "12px" }} for="reoccur">
+            Schedule Every Week
+          </label>
+          <input
+            ref={occurRef}
+            name="reoccur"
+            type="checkbox"
+            value="reoccur"
+          />
+        </div>
+        <div>
+          <button
+            onClick={closeInputFieldHandler}
+            style={{
+              border: "none",
+              background: "transparent",
+              fontSize: "20px",
+            }}
+            type="submit">
+            ❌
+          </button>
+          <button
+            style={{
+              border: "none",
+              background: "transparent",
+              fontSize: "20px",
+            }}
+            type="submit">
+            ✅
+          </button>
+        </div>
+      </div>
     </form>
   );
 }

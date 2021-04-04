@@ -12,9 +12,16 @@ export function useEvent() {
 // export the provider (handle all the logic here)
 export function EventProvider({ children }) {
   const [events, setEvents] = useState([]);
+
   const addEvent = (item) => {
     const copyOfEvents = [...events];
-    copyOfEvents.push(item);
+    if (item.length) {
+      for (const thing of item) {
+        copyOfEvents.push(thing);
+      }
+    } else {
+      copyOfEvents.push(item);
+    }
     setEvents(copyOfEvents);
   };
 

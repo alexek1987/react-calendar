@@ -25,7 +25,9 @@ function Calendar() {
   const prevMonth = () => setCurrentMonth(subMonths(currentMonth, 1));
 
   const userClick = (e) => {
-    console.log(setMousePosition({ x: e.clientX, y: e.clientY }));
+    if (mousePosition) {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    }
   };
 
   return (
@@ -132,7 +134,9 @@ function RenderCells({ currentMonth, selectedDate, onDateClick, userClick }) {
                 new Date(event.date).getDate() ===
                   new Date(cloneDay).getDate() &&
                 new Date(event.date).getMonth() ===
-                  new Date(currentMonth).getMonth() && <div>{event.event}</div>
+                  new Date(currentMonth).getMonth() && (
+                  <div key={event._id}>{event.event}</div>
+                )
             )}
           </div>
           <span className="number">{formattedDate}</span>
