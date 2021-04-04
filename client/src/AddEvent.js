@@ -2,7 +2,6 @@ import { useRef } from "react";
 import axios from "./api";
 import { useEvent } from "./contexts/EventContext";
 import { TextField } from "@material-ui/core";
-import { Button } from "@material-ui/core";
 
 function AddEvent({ mousePosition, selectedDate, setMousePosition }) {
   const { addEvent } = useEvent();
@@ -32,7 +31,6 @@ function AddEvent({ mousePosition, selectedDate, setMousePosition }) {
         left: mousePosition.x,
         zIndex: "999",
       }}>
-      {/* <input style={{ height: "50px" }} ref={inputRef} /> */}
       <TextField
         inputRef={inputRef}
         id="standard-basic"
