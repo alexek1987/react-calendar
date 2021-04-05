@@ -6,7 +6,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon server.js || node index.js"
+    "start": "node index.js"
   },
   "license": "ISC",
   "dependencies": {
