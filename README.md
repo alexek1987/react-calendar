@@ -20,4 +20,4 @@ Calendar APP using create-react-app and the MERN template: https://github.com/be
 
 # Deployed DEMO
 
-https://sheltered-headland-31116.herokuapp.com/
+https://calendar-ecbfc.web.app/
