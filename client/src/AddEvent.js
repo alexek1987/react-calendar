@@ -16,8 +16,6 @@ function AddEvent({ mousePosition, selectedDate, setMousePosition }) {
         reoccuring: occurRef.current.checked,
       };
 
-      console.log(data);
-
       const response = await axios.post("/event/new", data);
       addEvent(response.data.event);
       setMousePosition({ x: null, y: null });
