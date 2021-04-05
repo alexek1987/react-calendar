@@ -17,3 +17,7 @@ Calendar APP using create-react-app and the MERN template: https://github.com/be
 -Run 'npm i' in client directory & server directory.
 <br/>
 -Run 'npm start' in client directory & server directory.
+
+# Deployed DEMO
+
+https://sheltered-headland-31116.herokuapp.com/
