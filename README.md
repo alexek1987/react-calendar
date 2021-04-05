@@ -7,7 +7,9 @@ Calendar APP using create-react-app and the MERN template: https://github.com/be
 https://medium.com/@moodydev/create-a-custom-calendar-in-react-3df1bfd0b728
 
 -Refactored into a functional component using React hooks.
+<br/>
 -MongoDB database implemented.
+<br/>
 -Context API for handeling scheduling of events.
 
 # Features
